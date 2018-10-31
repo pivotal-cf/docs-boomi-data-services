@@ -1,30 +1,116 @@
 ---
-title: Installing and Configuring YOUR-PRODUCT-NAME
+title: Installing and Configuring Boomi Data Services for PCF
 owner: Partners
 ---
 
-This topic describes how to install and configure YOUR-PRODUCT-NAME.
+This topic describes how to install and configure Boomi Data Services for PCF.
 
-##<a id='install'></a> Install and Configure YOUR-PRODUCT-NAME
+##<a id="install"></a> Install and Configure Boomi Data Services for PCF
 
-To install the YOUR-PRODUCT-NAME file on the Ops Manager Installation Dashboard, do the following:
+To install the Boomi Data Services for PCF tile on the Ops Manager Installation Dashboard, do the following:
 
 1. Download the product file from Pivotal Network.
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
+1. Click **Import a Product** to improt the tile into Ops Manager.
 
-1. Under the **Import a Product** button, click **+** next to the version number of YOUR-PRODUCT-NAME. 
-This adds the tile to your staging area.
+1. Click the + symbol next to the uploaded product description.
 
-1. Click the newly added **YOUR-PRODUCT-NAME** tile.
+1. Click on the Boomi Data Services for PCF tile.
 
-1. **This portion of the procedure should tell the users how to configure the newly added tile by
-walking them through the sections. Which fields should they fill out? What are the different
-checkboxes? Include relevant screenshots here.** 
+1. Complete all the configuration steps in the <a href="#configure-tile">Configure Tile Properties</a> section below.
 
-1. Click **Save**.
+1. Return to the Ops Manager Installation Dashboard. Optionally, if you are using Ops Manager v2.3 or later, click
+   **Review Pending** Changes (see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html)).
 
-1. Return to the Ops Manager Installation Dashboard and click **Apply changes** to install YOUR-PRODUCT-NAME tile.
+1. Click **Apply Changes** to complete the installation of the Boomi Data Services for PCF tile.
 
-**If needed, include additional configuration information below. For example, maybe there are
-configuration options not required for installation but which could be useful for certain users.**
+###<a id="configure"></a> Configure Tile Properties
+
+Configure the sections listed on the left side of the page.
+
+<img src="img/om-sections.png">
+
+As you complete a section, save it. A green check mark appears next to the section name. Each section name must show this green check mark before you can complete your installation.
+
+- [Assign AZs and Networks](#azs)
+- [Account Setup](#account-setup)
+- [Configure the Primary Environment](#primary-environment)
+- [Configure Auxiliary Environments](#auxiliary-environments)
+
+####<a id="azs"></a> Assign AZs and Networks
+
+To select AZs and networks for VMs used by Boomi Data Services for PCF, do the following:
+
+<ol>
+  <li>Click <strong>Assign AZs and Networks</strong>
+
+  <li>Configure the fields on the <strong>Assign AZs and Networks</strong> pane as follows:
+   <table>
+     <thead><tr>
+       <th>Field</th>
+       <th>Instructions</th>
+     </tr></thead>
+     <tbody>
+       <tr>
+         <th>Place singleton jobs in</th>
+         <td>Select the region that you want for singleton VMs.</td>
+       </tr>
+       <tr>
+         <th>Balance other jobs in</th>
+         <td>Select the AZ(s) you want to use for distributing other VMs. Dell Boomi recommends selecting all of them.</td>
+       </tr>
+       <tr>
+         <th>Network</th>
+         <td>Select your PAS (or Elastic Runtime) network.</td>
+       </tr>
+     <tbody>
+   </table>
+  </li>
+
+  <li>Click <strong>Save</strong>.</li>
+</ol>
+
+
+####<a id="service-broker-setup"></a> Service Broker Configuration
+
+The Boomi Data Services Service Broker talks to AtomSphere to deploy integration packs onto virtual
+atoms, inside of the context of a sub-account.
+
+<img src="img/om-account-setup.png" />
+
+The **Username** text field allows you to enter the Dell Boomi Platform username of a service account to use for this
+deployment.  Dell Boomi recommends utilizing a service account, as opposed to a named account, for audit purposes.
+This field is **required**.
+
+The **Password** fields allows you to specify the password for the Dell Boomi Platform service account.
+This field is **required**.
+
+The **Master Account ID** text field allows you to supply the Account ID of your primary Dell Boomi Platform account.
+You can find this information in the Dell Boomi AtomSphere web interface, under the account menu in the top
+navigation bar.
+
+<img src="img/platform-topnav-account.png" />
+
+Clicking the **Search** button in the account switching dialog will list all of your accounts and sub-accounts.
+
+<img src="img/platform-switch-account.png" />
+
+If you do not want to expose a sub-account, or set of sub-accounts, via the service broker, you can explicitly skip
+them by adding their names to the **Skipped Sub-Account List**.
+
+
+####<a id="primary-environment"></a> Configure the Molecules
+
+This section allows you to configure the Boomi Molecules that will be deployed for your data service deployments.
+
+<img src="img/om-primary-env.png" />
+
+The **Environment Name** text field allows you to provide the name of the Primary Environment.
+
+The **Atom Prefix** text field allows you to specify a prefix for naming the atom deployed
+for the primary environment.  This prefix allows you to differentiate different installations
+from one another, in Atom Management in the AtomSphere web interface.
+
+The **Cloud Name** text field allows you to specify the name of the Atom Cloud to associate
+the deployed Atom instance to.  This Cloud must have already been created in AtomSphere.
+See [Requirements: An Atom Cloud](requirements.html#reqs-cloud) for more information.

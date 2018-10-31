@@ -1,0 +1,21 @@
+---
+:archive_menu:
+  ".": 
+:production_host: hello
+:subnav_templates:
+  boomi-data-services: boomi-data-services_subnav
+:template_variables: 
+:local_repo_dir: "/Users/jhunt/code/boomi/docs-boomi-data-services"
+:workspace: !ruby/object:Pathname
+  path: "/Users/jhunt/code/boomi/docs-boomi-data-services/docs-book/output/master_middleman/source"
+:feedback_enabled: 
+:repo_link_enabled: true
+:repo_links:
+  boomi-data-services:
+    repo: docs-content
+    ref: master
+    at_path: 
+:product_info:
+  boomi-data-services: {}
+:elastic_search: false
+:proof: false

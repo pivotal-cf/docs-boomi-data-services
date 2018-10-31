@@ -1,0 +1,5 @@
+#!/bin/bash
+set -ex
+for x in orig/*; do
+  convert -resize '50%' -border 1 $x ${x#orig/}
+done
