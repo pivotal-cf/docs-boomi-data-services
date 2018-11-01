@@ -1,13 +1,13 @@
 ---
-title: Installing Boomi Data Services for PCF for PKI
+title: Installing Boomi Data Services for PCF for PKS
 owner: Partners
 ---
 
-This topic describes how to install Pivotal Boomi Data Services for PKS. The installation process involves loading the Boomi Data Services container images into your container registry, and then using the helm package manager to install the Boomi Data Services Atom resource into Kubernetes. After the Boomi Data Services is resource is available you will be able to work with the Atom Cloud.
+This topic describes how to install Pivotal Boomi Data Services for PCF on  Pivotal Container Service (PKS). The installation process involves loading the Boomi Data Services container images into your container registry, and then using the helm package manager to install the Boomi Data Services Atom resource into Kubernetes. After the Boomi Data Services is resource is available you will be able to work with the Atom Cloud.
 
 ## Prerequisites
 
-Before you install Boomi Data Services for PKS, ensure that you have installed the required software and prepared your Kubernetes environment as described in Prerequisites.
+Before you install Boomi Data Services for PCF on PKS, ensure that you have installed the required software and prepared your Kubernetes environment as described in Prerequisites.
 Procedure
 Follow these steps to download and install the Boomi Data Services for PKS container images, and install the Boomi Data Services Atom resource.
 
@@ -25,7 +25,7 @@ Before you attempt to deploy Boomi Data Services, ensure that the target cluster
 
     pks list-clusters
 
-Note: The pks login cookie typically expires after a day or two.
+Note: The PKS login cookie typically expires after a day or two.
 
 Note: If any problems occur during deployment, retry deploying Boomi Data Services by first removing the previous deployment.
 
@@ -50,7 +50,7 @@ Initialize and upgrade helm with the command:
     Tiller (the Helm server-side component) has been upgraded to the current version.
     Happy Helming!
 
-###  Google Kubernetes Engine (GKE) running on Google Cloud Platform (GCP)
+###  Google Kubernetes Engine (GKE) Running on Google Cloud Platform (GCP)
 
 This section describes the requirements for using Boomi Data Services for Kubernetes with Google Kubernetes Engine (GKE) deployments.
 
