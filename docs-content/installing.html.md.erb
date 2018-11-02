@@ -3,7 +3,40 @@ title: Installing and Configuring Boomi Data Services for PCF
 owner: Partners
 ---
 
+
 This topic describes how to install and configure Boomi Data Services for PCF.
+
+##<a id="reqs-account"></a> Requirements: A Boomi AtomSphere Platform Account
+
+You will need a Boomi AtomSphere Platform account, with at least one subaccount, and the
+ability to publish Integration Packs from the main account to these subaccounts.
+
+##<a id="reqs-cloud"></a> Requirements: An Atom Cloud
+
+Before you can configure Boomi Data Services for PCF, you will need to create a
+Cloud using the Boomi AtomSphere web interface.  To do so, navigate to the **Manage** &raquo;
+**Cloud Management** interface:
+
+<img src="img/boomi-cloud-management.png">
+
+Clicking the **+** icon in the left-hand sidebar will bring you a form for creating your
+new AtomSphere Cloud:
+
+<img src="img/boomi-create-atom-cloud.png">
+
+Ensure that:
+
+- **Allow Deployments** checkbox is checked.
+- **Max. Atom Attachments per Account** is set to **-1**.
+- **Classification** is set to **Production**.
+
+Make a note of the Cloud Name that you chose for your new cloud, as Tile Configuration
+requires that piece of information.
+
+You will need to repeat this process for every additional (auxiliary) Atom or Molecule
+environment that you wish to configure and deploy.
+
+
 
 ##<a id="install"></a> Install and Configure Boomi Data Services for PCF
 
@@ -24,7 +57,7 @@ To install the Boomi Data Services for PCF tile on the Ops Manager Installation 
 
 1. Click **Apply Changes** to complete the installation of the Boomi Data Services for PCF tile.
 
-###<a id="configure"></a> Configure Tile Properties
+##<a id="configure"></a> Configure Tile Properties
 
 Configure the sections listed on the left side of the page.
 
@@ -37,7 +70,7 @@ As you complete a section, save it. A green check mark appears next to the secti
 - [Configure the Primary Environment](#primary-environment)
 - [Configure Auxiliary Environments](#auxiliary-environments)
 
-####<a id="azs"></a> Assign AZs and Networks
+##<a id="azs"></a> Assign AZs and Networks
 
 To select AZs and networks for VMs used by Boomi Data Services for PCF, do the following:
 
@@ -71,7 +104,7 @@ To select AZs and networks for VMs used by Boomi Data Services for PCF, do the f
 </ol>
 
 
-####<a id="service-broker-setup"></a> Service Broker Configuration
+##<a id="service-broker-setup"></a> Service Broker Configuration
 
 The Boomi Data Services Service Broker talks to AtomSphere to deploy integration packs onto virtual
 atoms, inside of the context of a sub-account.
@@ -99,7 +132,7 @@ If you do not want to expose a sub-account, or set of sub-accounts, via the serv
 them by adding their names to the **Skipped Sub-Account List**.
 
 
-####<a id="primary-environment"></a> Configure the Molecules
+##<a id="primary-environment"></a> Configure the Molecules
 
 This section allows you to configure the Boomi Molecules that will be deployed for your data service deployments.
 
