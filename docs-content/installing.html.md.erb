@@ -8,8 +8,9 @@ This topic describes how to install and configure Boomi Data Services for Pivota
 
 ##<a id="reqs-account"></a> Requirements: A Boomi AtomSphere Platform Account
 
-You need a Boomi AtomSphere Platform account, with at least one subaccount, and the
-ability to publish Integration Packs from the main account to these subaccounts.
+You need a Boomi AtomSphere Platform account with the following:
+    + At least one sub-account
+    + The ability to publish Integration Packs from the main account to these sub-accounts
 
 ##<a id="reqs-cloud"></a> Requirements: An Atom Cloud
 
@@ -30,11 +31,11 @@ Ensure that:
 - **Max. Atom Attachments per Account** is set to **-1**.
 - **Classification** is set to **Production**.
 
-Make a note of the Cloud Name that you chose for your new cloud, as Tile Configuration
+Make a note of the Cloud Name that you chose for your new cloud, because Tile Configuration
 requires that piece of information.
 
 You need to repeat this process for every additional (auxiliary) Atom or Molecule
-environment that you wish to configure and deploy.
+environment that you want to configure and deploy.
 
 
 
@@ -52,7 +53,9 @@ To install the Boomi Data Services for PCF tile on the Ops Manager Installation 
 
 1. Complete all the configuration steps in the <a href="#configure-tile">Configure Tile Properties</a> section below.
 
-1. Return to the Ops Manager Installation Dashboard. Optionally, if you are using Ops Manager v2.3 or later, click
+1. Return to the Ops Manager Installation Dashboard.
+
+1. If you are using Ops Manager v2.3 or later, click
    **Review Pending** Changes (see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html)).
 
 1. Click **Apply Changes** to complete the installation of the Boomi Data Services for PCF tile.
@@ -61,22 +64,21 @@ To install the Boomi Data Services for PCF tile on the Ops Manager Installation 
 
 <ol>
    <li>In Ops Manager, click on the Boomi Data Services for PCF tile
-       and work through the the sections listed on the left side of the page.
+       and work through the panes listed on the left side of the page.
 
-      <br/><img src="img/om-sections.png">
+      <br/><img src="img/om-sections.png" alt="settings panes for Boomi Data Services"  width="300">
   </li>
   <li> As you complete a section, save it.
-    A green check mark appears next to the section name.
-    Each section name must show this green check mark before you can complete your installation.
+    A green check mark appears next to the pane name.
+    Each pane name must show this green check mark before you can complete your installation.
   </li>
-  <li>Review the instructions below for a detailed explanation of each section  </li>
+  <li>Review the instructions below for a detailed explanation of each pane.</li>
 </ol>
-
-- [Assign AZs and Networks](#azs)
-- [Account Setup](#account-setup)
-- [Molecule Environment](#molecule-environment)
-- [Errands](#configure-errands)
-- [Resource Config](#configure-resource-config)
+  - [Assign AZs and Networks](#azs)
+  - [Account Setup](#account-setup)
+  - [Molecule Environment](#molecule-environment)
+  - [Errands](#configure-errands)
+  - [Resource Config](#configure-resource-config)
 
 
 ##<a id="azs"></a> Assign AZs and Networks
@@ -118,8 +120,8 @@ To select AZs and networks for VMs used by Boomi Data Services for PCF, do the f
 The Boomi Data Services Service Broker talks to AtomSphere to deploy integration packs onto virtual
 atoms, inside of the context of a sub-account.
 <ol>
-  <li> Click on Account Setup </li>
-  <li> Configure fields in <strong> Account Setup </strong> as follows
+  <li> Click on **Account Setup**.</li>
+  <li> Configure fields in <strong> Account Setup </strong> as follows.
     <br/>
 
   <table>
@@ -167,13 +169,13 @@ atoms, inside of the context of a sub-account.
     <img src="img/platform-switch-account.png" />
     <br/>If you do not want to expose a sub-account, or set of sub-accounts, via the service broker, you can explicitly skip them by adding their names here (comma separated).
 </li>
-  <li> Click <strong>Save</strong> </li>
+  <li> Click <strong>Save</strong>.</li>
 </ol>
 ##<a id="molecule-environment"></a> Configure the Molecule Environment
-This section allows you to configure the Boomi Molecules that will be deployed for your data service deployments.
+This pane allows you to configure the Boomi Molecules that will be deployed for your data service deployments.
 
 <ol>
-  <li> Click on <strong>Molecule Environment</strong> </li>
+  <li> Click on <strong>Molecule Environment</strong>.</li>
   <li> Configure fields in <strong> Molecule Environment</strong> as follows:
     <table>
       <thead>
@@ -202,13 +204,13 @@ This section allows you to configure the Boomi Molecules that will be deployed f
       </tbody>
     </table>
   </li>
-  <li> Click <strong>Save</strong> </li>
+  <li> Click <strong>Save</strong>.</li>
 </ol>
 ##<a id="configure-errands"></a> Configure the Errands
 These are errands that can save you pre and post-deploy configuration
 <ol>
-  <li> Click on <strong>Errands</strong> </li>
-  <li> Configure <strong>Errands</strong> as follows
+  <li> Click on <strong>Errands</strong>.</li>
+  <li> Configure <strong>Errands</strong> as follows:
     <table>
       <thead>
         <tr>
@@ -230,11 +232,14 @@ These are errands that can save you pre and post-deploy configuration
       </tbody>
     </table>
    </li>
-  <li> Click <strong>Save</strong> </li>
+  <li> Click <strong>Save</strong>.</li>
 </ol>
 ##<a id="configure-resource-config"></a> Configure Resource Config
-This section contains sane defaults for the Job nodes configured and deployed with this tile
+
+This pane contains sane defaults for the job nodes configured and deployed with this tile.
 <ol>
-  <li> Click on <strong> Configure Resource Config</strong> </li>
-  <li> Review the defaults, in general you shouldn't need to change these, but in the case of scaling issues these can be reviewed and adjusted</li>
+  <li> Click on <strong> Configure Resource Config</strong>.</li>
+  <li> Review the defaults.
+       In general, you should not need to change these.
+       However, in the case of scaling issues, these can be reviewed and adjusted.</li>
 </ol>
