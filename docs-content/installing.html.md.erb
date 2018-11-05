@@ -8,18 +8,18 @@ This topic describes how to install and configure Boomi Data Services for Pivota
 
 ##<a id="reqs-account"></a> Requirements: A Boomi AtomSphere Platform Account
 
-You will need a Boomi AtomSphere Platform account, with at least one subaccount, and the
+You need a Boomi AtomSphere Platform account, with at least one subaccount, and the
 ability to publish Integration Packs from the main account to these subaccounts.
 
 ##<a id="reqs-cloud"></a> Requirements: An Atom Cloud
 
-Before you can configure Boomi Data Services for PCF, you will need to create a
+Before you can configure Boomi Data Services for PCF, you need to create a
 Cloud using the Boomi AtomSphere web interface.  To do so, navigate to the **Manage** &raquo;
 **Cloud Management** interface:
 
 <img src="img/boomi-cloud-management.png">
 
-Clicking the **+** icon in the left-hand sidebar will bring you a form for creating your
+Clicking the **+** icon in the left-hand sidebar displays a form for creating your
 new AtomSphere Cloud:
 
 <img src="img/boomi-create-atom-cloud.png">
@@ -33,7 +33,7 @@ Ensure that:
 Make a note of the Cloud Name that you chose for your new cloud, as Tile Configuration
 requires that piece of information.
 
-You will need to repeat this process for every additional (auxiliary) Atom or Molecule
+You need to repeat this process for every additional (auxiliary) Atom or Molecule
 environment that you wish to configure and deploy.
 
 
@@ -219,11 +219,13 @@ These are errands that can save you pre and post-deploy configuration
       <tbody>
         <tr>
           <th>Post Deploy Errands</th>
-          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On. On will Enumerate and register all sub-account-specific service brokers with the deployed Pivotal Application Service (PAS).</td>
+          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On.
+              On enumerates and registers all sub-account-specific service brokers
+              with the deployed Pivotal Application Service (PAS).</td>
         </tr>
         <tr>
           <th>Pre-Delete Errands</th>
-          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On. On Unregisters all sub-account-specific service brokers with the deployed Pivotal Application Service (PAS).</td>
+          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On. On unregisters all sub-account-specific service brokers with the deployed Pivotal Application Service (PAS).</td>
         </tr>
       </tbody>
     </table>
