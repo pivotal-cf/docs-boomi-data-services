@@ -9,32 +9,34 @@ This topic describes how to install and configure Boomi Data Services for Pivota
 ##<a id="reqs-account"></a> Requirements: A Boomi AtomSphere Platform Account
 
 You need a Boomi AtomSphere Platform account with the following:
-    + At least one sub-account
-    + The ability to publish Integration Packs from the main account to these sub-accounts
+
++ At least one sub-account
++ The ability to publish Integration Packs from the main account to these sub-accounts
 
 ##<a id="reqs-cloud"></a> Requirements: An Atom Cloud
 
 Before you can configure Boomi Data Services for PCF, you need to create a
-Cloud using the Boomi AtomSphere web interface.  To do so, navigate to the **Manage** &raquo;
+Cloud using the Boomi AtomSphere web interface.  To do so:
+
+1. Navigate to the **Manage** &raquo;
 **Cloud Management** interface:
 
-<img src="img/boomi-cloud-management.png">
+    <img src="img/boomi-cloud-management.png">
 
-Clicking the **+** icon in the left-hand sidebar displays a form for creating your
+2. Click the **+** icon in the left-hand sidebar to display a form for creating your
 new AtomSphere Cloud:
 
-<img src="img/boomi-create-atom-cloud.png">
+    <img src="img/boomi-create-atom-cloud.png">
 
-Ensure that:
+3. Ensure that:
+    - **Allow Deployments** checkbox is checked.
+    - **Max. Atom Attachments per Account** is set to **-1**.
+    - **Classification** is set to **Production**.
 
-- **Allow Deployments** checkbox is checked.
-- **Max. Atom Attachments per Account** is set to **-1**.
-- **Classification** is set to **Production**.
-
-Make a note of the Cloud Name that you chose for your new cloud, because Tile Configuration
+4. Record the Cloud Name that you chose for your new cloud, because tile configuration
 requires that piece of information.
 
-You need to repeat this process for every additional (auxiliary) Atom or Molecule
+5. Repeat this process for every additional (auxiliary) Atom or Molecule
 environment that you want to configure and deploy.
 
 
@@ -61,6 +63,8 @@ To install the Boomi Data Services for PCF tile on the Ops Manager Installation 
 1. Click **Apply Changes** to complete the installation of the Boomi Data Services for PCF tile.
 
 ##<a id="configure"></a> Configure Tile Properties
+
+To configure tile properties, do the following:
 
 <ol>
    <li>In Ops Manager, click on the Boomi Data Services for PCF tile
@@ -105,7 +109,7 @@ To select AZs and networks for VMs used by Boomi Data Services for PCF, do the f
        </tr>
        <tr>
          <th>Network</th>
-         <td>Select your PAS (or Elastic Runtime) network.</td>
+         <td>Select your Pivotal Application Service (PAS) network.</td>
        </tr>
      <tbody>
    </table>
@@ -167,7 +171,8 @@ atoms, inside of the context of a sub-account.
     Click the <strong>Search</strong> button in the account switching dialog to list all of your accounts and sub-accounts.
     <br/>
     <img src="img/platform-switch-account.png" />
-    <br/>If you do not want to expose a sub-account, or set of sub-accounts, via the service broker, you can explicitly skip them by adding their names here (comma separated).
+    <br/>If you do not want to expose a sub-account, or set of sub-accounts, via the service broker,
+         you can explicitly skip them by adding their names here separated by commas.
 </li>
   <li> Click <strong>Save</strong>.</li>
 </ol>
@@ -207,7 +212,7 @@ This pane allows you to configure the Boomi Molecules that will be deployed for 
   <li> Click <strong>Save</strong>.</li>
 </ol>
 ##<a id="configure-errands"></a> Configure the Errands
-These are errands that can save you pre and post-deploy configuration
+These are errands that can save you pre and post-deploy configuration.
 <ol>
   <li> Click on <strong>Errands</strong>.</li>
   <li> Configure <strong>Errands</strong> as follows:
@@ -223,11 +228,12 @@ These are errands that can save you pre and post-deploy configuration
           <th>Post Deploy Errands</th>
           <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On.
               On enumerates and registers all sub-account-specific service brokers
-              with the deployed Pivotal Application Service (PAS).</td>
+              with the deployed PAS.</td>
         </tr>
         <tr>
           <th>Pre-Delete Errands</th>
-          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On. On unregisters all sub-account-specific service brokers with the deployed Pivotal Application Service (PAS).</td>
+          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On.
+              On unregisters all sub-account-specific service brokers with the deployed PAS.</td>
         </tr>
       </tbody>
     </table>
