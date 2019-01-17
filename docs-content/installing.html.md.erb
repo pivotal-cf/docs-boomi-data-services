@@ -11,6 +11,7 @@ This topic describes how to install and configure Boomi Data Services for Pivota
 You need a Boomi AtomSphere Platform account with the following:
 
 + At least one sub-account
++ Appropriate Boomi licenses (contact Boomi Representitive).
 + The ability to publish Integration Packs from the main account to these sub-accounts
 
 ##<a id="reqs-cloud"></a> Requirements: An Atom Cloud
@@ -137,29 +138,40 @@ atoms, inside of the context of a sub-account.
     </thead>
     <tbody>
       <tr>
-        <th>  Username </th>
+        <th>Boomi AtomSphere Account Username</th>
         <td> Text field allows you to enter the Dell Boomi Platform username of a service account to use for this
   deployment.  Dell Boomi recommends utilizing a service account, as opposed to a named account, for audit purposes.
   This field is <b>required</b>.
        </td>
       </tr>
       <tr>
-        <th>Password</th>
-        <td>Fields allows you to specify the password for the Dell Boomi Platform service account.
-  This field is <b>required</b>.
+        <th>Boomi AtomSphere Account Password</th>
+        <td>Fields allows you to specify the password for the Dell Boomi Platform service account. This field is <b>required</b>.
         </td>
      </tr>
      <tr>
        <th>Master Account ID</th>
        <td> Text field allows you to supply the Account ID of your primary Dell Boomi Platform account.
   You can find this information in the Dell Boomi AtomSphere web interface, under the account menu in the top
-  navigation bar.</td>
+  navigation bar. This field is <b>required</b>.</td>
     </tr>
       <tr>
-        <th>Skip Sub Account List</th>
+        <th>Boomi AtomSphere Sub-accounts</th>
         <td>
-          If you do not want to expose a sub-account, or set of sub-accounts, via the service broker,
-          you can explicitly skip them by adding their names to the Skipped Sub-Account List.
+          Explicitly set the list of sub-accounts as a comma-delimited list (sub-account1, sub-account2...). 
+          This field is <b>required</b>.
+        </td>
+     </tr>
+     <tr>
+        <th>Show Pre-Deployed APIs in Catalog</th>
+        <td>Whether or not pre-deployed APIs (visible in API Management) should be offered as bindable services in Cloud Foundry.
+        </td>
+     </tr>
+     <tr>
+        <th>Catalog Refresh Interval</th>
+        <td>How often (in minutes) to refresh PCF service catalog information from the Boomi AtomSphere API. 
+            Note: Setting too low of a value may exhaust AtomSphere API usage allowance for your account.
+            This field is <b>required</b>.
         </td>
      </tr>
    </tbody>
@@ -171,8 +183,7 @@ atoms, inside of the context of a sub-account.
     Click the <strong>Search</strong> button in the account switching dialog to list all of your accounts and sub-accounts.
     <br/>
     <img src="img/platform-switch-account.png" />
-    <br/>If you do not want to expose a sub-account, or set of sub-accounts, via the service broker,
-         you can explicitly skip them by adding their names here separated by commas.
+    <br/>
 </li>
   <li> Click <strong>Save</strong>.</li>
 </ol>
@@ -191,20 +202,24 @@ This pane allows you to configure the Boomi Molecules that will be deployed for 
       </thead>
       <tbody>
         <tr>
-          <th> Environment </th>
-          <td> Text field allows you to provide the name of the Primary Environment.</td>
+          <th> Environment Name  </th>
+          <td> Text field allows you to provide the name of the Primary Environment. This field is <b>required</b>.</td>
+        </tr>
+        <tr>
+          <th> Environment Type  </th>
+          <td> The type of this environment, for Boomi license purposes. This field is <b>required</b>.</td>
         </tr>
         <tr>
           <th> Cloud Name </th>
           <td> Text field allows you to specify the name of the Atom Cloud to associate
-          the deployed Atom instance to.  This Cloud must have already been created in AtomSphere.
+          the deployed Atom instance to.  This Cloud must have already been created in AtomSphere. This field is <b>required</b>.
           </td>
         </tr>
         <tr>
            <th> Atom Name Prefix </th>
            <td> Text field allows you to specify a prefix for naming the atom deployed
            for the primary environment.  This prefix allows you to differentiate installations
-           from one another, in Atom Management within the AtomSphere web interface.</td>
+           from one another, in Atom Management within the AtomSphere web interface. This field is <b>required</b>.</td>
         </tr>
       </tbody>
     </table>
