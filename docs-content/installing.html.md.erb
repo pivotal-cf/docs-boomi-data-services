@@ -8,31 +8,36 @@ This topic describes how to install and configure Boomi Data Services for Pivota
 
 ##<a id="reqs-account"></a> Requirements: A Boomi AtomSphere Integration Platform Account
 
-You need a Boomi AtomSphere Platform account with specific licensing. A Boomi 30 day trial license does not meet the needed requirements. Please contact your Boomi representative, or [support](https://boomi.com/services/support/) for assistance.
+You need a Boomi AtomSphere Platform account with the following:
+
++ At least one sub-account
++ Appropriate Boomi licenses (contact Boomi Representitive)
++ The ability to publish Integration Packs from the main account to these sub-accounts
 
 ##<a id="reqs-cloud"></a> Requirements: An Atom Cloud
 
 Before you can configure Boomi Data Services for PCF, you need to create a
-Cloud using the Boomi AtomSphere web interface.  To do so, navigate to the **Manage** &raquo;
+Cloud using the Boomi AtomSphere web interface.  To do so:
+
+1. Navigate to the **Manage** &raquo;
 **Cloud Management** interface:
 
-<img src="img/boomi-cloud-management.png">
+    <img src="img/boomi-cloud-management.png">
 
-Clicking the **+** icon in the left-hand sidebar displays a form for creating your
+2. Click the **+** icon in the left-hand sidebar to display a form for creating your
 new AtomSphere Cloud:
 
-<img src="img/boomi-create-atom-cloud.png">
+    <img src="img/boomi-create-atom-cloud.png">
 
-Ensure that:
+3. Ensure that:
+    - **Allow Deployments** checkbox is checked.
+    - **Max. Atom Attachments per Account** is set to **-1**.
+    - **Classification** is set to **Production**.
 
-- **Allow Deployments** checkbox is checked.
-- **Max. Atom Attachments per Account** is set to **-1**.
-- **Classification** is set to **Production**.
-
-Make a note of the Cloud Name that you chose for your new cloud, because Tile Configuration
+4. Record the Cloud Name that you chose for your new cloud, because tile configuration
 requires that piece of information.
 
-You need to repeat this process for every additional (auxiliary) Atom or Molecule
+5. Repeat this process for every additional (auxiliary) Atom or Molecule
 environment that you want to configure and deploy.
 
 
@@ -59,6 +64,8 @@ To install the Boomi Data Services for PCF tile on the Ops Manager Installation 
 1. Click **Apply Changes** to complete the installation of the Boomi Data Services for PCF tile.
 
 ##<a id="configure"></a> Configure Tile Properties
+
+To configure tile properties, do the following:
 
 <ol>
    <li>In Ops Manager, click on the Boomi Data Services for PCF tile
@@ -103,7 +110,7 @@ To select AZs and networks for VMs used by Boomi Data Services for PCF, do the f
        </tr>
        <tr>
          <th>Network</th>
-         <td>Select your PAS (or Elastic Runtime) network.</td>
+         <td>Select your Pivotal Application Service (PAS) network.</td>
        </tr>
      <tbody>
    </table>
@@ -131,29 +138,40 @@ atoms, inside of the context of a sub-account.
     </thead>
     <tbody>
       <tr>
-        <th>  Username </th>
+        <th>Boomi AtomSphere Account Username</th>
         <td> Text field allows you to enter the Dell Boomi Platform username of a service account to use for this
   deployment.  Dell Boomi recommends utilizing a service account, as opposed to a named account, for audit purposes.
   This field is <b>required</b>.
        </td>
       </tr>
       <tr>
-        <th>Password</th>
-        <td>Fields allows you to specify the password for the Dell Boomi Platform service account.
-  This field is <b>required</b>.
+        <th>Boomi AtomSphere Account Password</th>
+        <td>Fields allows you to specify the password for the Dell Boomi Platform service account. This field is <b>required</b>.
         </td>
      </tr>
      <tr>
        <th>Master Account ID</th>
        <td> Text field allows you to supply the Account ID of your primary Dell Boomi Platform account.
   You can find this information in the Dell Boomi AtomSphere web interface, under the account menu in the top
-  navigation bar.</td>
+  navigation bar. This field is <b>required</b>.</td>
     </tr>
       <tr>
-        <th>Skip Sub Account List</th>
+        <th>Boomi AtomSphere Sub-accounts</th>
         <td>
-          If you do not want to expose a sub-account, or set of sub-accounts, via the service broker,
-          you can explicitly skip them by adding their names to the Skipped Sub-Account List.
+          Explicitly set the list of sub-accounts as a comma-delimited list (sub-account1, sub-account2...). 
+          This field is <b>required</b>.
+        </td>
+     </tr>
+     <tr>
+        <th>Show Pre-Deployed APIs in Catalog</th>
+        <td>Whether or not pre-deployed APIs (visible in API Management) should be offered as bindable services in Cloud Foundry.
+        </td>
+     </tr>
+     <tr>
+        <th>Catalog Refresh Interval</th>
+        <td>How often (in minutes) to refresh PCF service catalog information from the Boomi AtomSphere API. 
+            Note: Setting too low of a value may exhaust AtomSphere API usage allowance for your account.
+            This field is <b>required</b>.
         </td>
      </tr>
    </tbody>
@@ -165,7 +183,7 @@ atoms, inside of the context of a sub-account.
     Click the <strong>Search</strong> button in the account switching dialog to list all of your accounts and sub-accounts.
     <br/>
     <img src="img/platform-switch-account.png" />
-    <br/>If you do not want to expose a sub-account, or set of sub-accounts, via the service broker, you can explicitly skip them by adding their names here (comma separated).
+    <br/>
 </li>
   <li> Click <strong>Save</strong>.</li>
 </ol>
@@ -184,20 +202,24 @@ This pane allows you to configure the Boomi Molecules that will be deployed for 
       </thead>
       <tbody>
         <tr>
-          <th> Environment </th>
-          <td> Text field allows you to provide the name of the Primary Environment.</td>
+          <th> Environment Name  </th>
+          <td> Text field allows you to provide the name of the Primary Environment. This field is <b>required</b>.</td>
+        </tr>
+        <tr>
+          <th> Environment Type  </th>
+          <td> The type of this environment, for Boomi license purposes. This field is <b>required</b>.</td>
         </tr>
         <tr>
           <th> Cloud Name </th>
           <td> Text field allows you to specify the name of the Atom Cloud to associate
-          the deployed Atom instance to.  This Cloud must have already been created in AtomSphere.
+          the deployed Atom instance to.  This Cloud must have already been created in AtomSphere. This field is <b>required</b>.
           </td>
         </tr>
         <tr>
            <th> Atom Name Prefix </th>
            <td> Text field allows you to specify a prefix for naming the atom deployed
            for the primary environment.  This prefix allows you to differentiate installations
-           from one another, in Atom Management within the AtomSphere web interface.</td>
+           from one another, in Atom Management within the AtomSphere web interface. This field is <b>required</b>.</td>
         </tr>
       </tbody>
     </table>
@@ -205,7 +227,7 @@ This pane allows you to configure the Boomi Molecules that will be deployed for 
   <li> Click <strong>Save</strong>.</li>
 </ol>
 ##<a id="configure-errands"></a> Configure the Errands
-These are errands that can save you pre and post-deploy configuration
+These are errands that can save you pre and post-deploy configuration.
 <ol>
   <li> Click on <strong>Errands</strong>.</li>
   <li> Configure <strong>Errands</strong> as follows:
@@ -221,11 +243,12 @@ These are errands that can save you pre and post-deploy configuration
           <th>Post Deploy Errands</th>
           <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On.
               On enumerates and registers all sub-account-specific service brokers
-              with the deployed Pivotal Application Service (PAS).</td>
+              with the deployed PAS.</td>
         </tr>
         <tr>
           <th>Pre-Delete Errands</th>
-          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On. On unregisters all sub-account-specific service brokers with the deployed Pivotal Application Service (PAS).</td>
+          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On.
+              On unregisters all sub-account-specific service brokers with the deployed PAS.</td>
         </tr>
       </tbody>
     </table>
