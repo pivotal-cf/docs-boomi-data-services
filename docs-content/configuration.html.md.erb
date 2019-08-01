@@ -10,12 +10,12 @@ Foundry (PCF).
 
 ### Tile settings -> Account Setup -> Catalog Refresh Interval
 
-How often (in minutes) to poll the Boomi AtomSphere API looking for new
+How often to poll the Boomi AtomSphere API looking for new
 integration packs to be made available, and subsequently refresh the
 catalog of available services.
 
 This can be decreased if a faster refresh for services is required
-or this value can be increased to prevent an environment from rate limiting the
+or increased to prevent an environment from rate limiting the
 associated Boomi account.
 
 ## Support for AutoFS/automounts
@@ -46,9 +46,8 @@ Here is an example, that mounts two volumes into `/data/...`:
 
 Any Boomi processes or workflows deployed to an installation
 with that configuration will be able to seamlessly and
-transparently access the `/data/etl3` and `/data/ftw` volumes,
-remotely, and on-demand.  More importantly, failure of the
-backing storage systems will not prevent the Boomi Data Services
+transparently access the `/data/etl3` and `/data/ftw` volumes remotely on-demand.  
+More importantly, failure of the backing storage systems will not prevent the Boomi Data Services
 installation from booting and performing any _other_ work.
 
 For more details on the format of this key, see the Linux manual
