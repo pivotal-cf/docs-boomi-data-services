@@ -3,10 +3,15 @@ title: Configuring Boomi Data Services for PCF (PKS) on PKS
 owner: Partners
 ---
 
-This topic describes further configuration options for Boomi Data Services for Pivotal Cloud
+This topic describes advanced, non-required, configuration options for Boomi Data Services for Pivotal Cloud
 Foundry (PCF).
 
-## Catalog Refresh Interval
+  - [Catalog Refresh Interval](#catalog-refresh)
+  - [Support for Autofs/Automounts](#autofs)
+  - [Configure Registration/De-Registration Errands](#errands)
+  - [Scaling Deployed Resources](#scaling)
+
+##<a id="catalog-refresh"></a> Catalog Refresh Interval
 
 ### Tile settings -> Account Setup -> Catalog Refresh Interval
 
@@ -18,19 +23,14 @@ This can be decreased if a faster refresh for services is required
 or increased to prevent an environment from rate limiting the
 associated Boomi account.
 
-## Support for AutoFS/automounts
+##<a id="autofs"></a> Support for Autofs/Automounts
 
 ### Tile settings -> Advanced -> Data Volume AutoFS Configuration
 
-This gives operators the option to specify their own custom AutoFS configuration.
+This gives operators the option to specify their own Autofs map.
 
-Enter any AutoFS compliant automounter map in the text box here.
-A commented-out configuration with fake example values has been provided (should that be useful).
-
-If you have data volumes that you need your Boomi Data Services
-installation to be able to access, as part of the process and
-web service workflows you are deploying to it, you can set those
-up via this configuration value.
+Enter your Autofs master map in the text box here.
+A commented-out map with example values has been provided.
 
 This specifies the complete, direct map of Linux automounter
 configuration, to be used on the `molecule` pods.
@@ -45,38 +45,33 @@ Here is an example, that mounts two volumes into `/data/...`:
     ```
 
 Any Boomi processes or workflows deployed to an installation
-with that configuration will be able to seamlessly and
-transparently access the `/data/etl3` and `/data/ftw` volumes remotely on-demand.  
+with that configuration will be able to seamlessly access the `/data/etl3` and `/data/ftw` volumes remotely on-demand.
 More importantly, failure of the backing storage systems will not prevent the Boomi Data Services
 installation from booting and performing any _other_ work.
 
 For more details on the format of this key, see the Linux manual
-page for autofs, `autofs(5)`.
+page for Autofs, `autofs(5)`.
 
-## Configure the Registration/De-registration Errands (Register/De-register broker to/from PCF)
+##<a id="errands"></a> Configure Registration/De-Registration Errands
 
 ### Tile settings -> Errands -> Post-Deploy/Pre-Delete Errands
 
 These are errands that can save you pre and post-deploy configuration.
 
 By default, the tile will register your Boomi Data Services
-Broker with your Pivotal Cloud Foundry installation, set up some
-routes for accessing the broker and deployed services, and
-integrate Boomi Data Services into your services marketplace.
+Broker with your PCF, set up some routing for the broker/services,
+and populate your cf marketplace.
 
 To do this, the tile uses bespoke errand jobs called `Service Broker Registration Errand`
 and `Service Broker De-registration Errand`.
 These are activated by default, but can be found under the `Errands` heading in the tile.
 
 If the registration or de-registration errand is preventing an apply-changes
-from completing, they can be turned off and later implemented by hand using the
-`cf create-service-broker` command or the `cf delete-service-broker` command.
+from completing, they can be disabled here, and later replicated via the `cf` cli.
 More info can be found at https://docs.cloudfoundry.org/services/managing-service-brokers.html
 
-## Scaling Deployed Resources
-
-### Tile settings -> Resource Config
+##<a id="scaling"></a> Scaling Deployed Resources
 
 This pane contains sane defaults for the job nodes configured and deployed with this tile.
 In general, you should not need to change these.
-However, in the case of scaling issues these can be reviewed and adjusted.
+However, in the case of scaling issues these can be reviewed and adjusted using the drop-down menus provided on this page.

@@ -5,7 +5,7 @@ owner: Partners
 
 This topic describes how to install and configure Boomi Data Services for Pivotal Cloud Foundry (PCF).
 All of the following described configuration fields are <b>required</b>
-For further configuration from the base requisites listed here, see the Configuration page.
+For advanced (non-required) configuration options see the Configuration page.
 
 ##<a id="reqs-account"></a> Requirements: A Boomi AtomSphere Integration Platform Account
 
@@ -33,7 +33,7 @@ new AtomSphere Cloud:
 3. Ensure that:
     - **Allow Deployments** checkbox is checked.
     - **Max. Atom Attachments per Account** is set to **-1**.
-    - **Classification** is set to **Production**.
+    - **Classification** matches your licensing type (PROD vs DEV).
 
 4. Record the Cloud Name that you chose for your new cloud, because tile configuration
 requires that piece of information.
@@ -57,10 +57,11 @@ To install the Boomi Data Services for PCF tile on the Ops Manager Installation 
 
 1. Complete all the configuration steps in the <a href="#configure">Configure Tile Properties</a> section below.
 
-1. Return to the Ops Manager Installation Dashboard.
+1. Return to the Ops Manager installation dashboard.
 
-1. If you are using Ops Manager v2.3 or later, click
-   **Review Pending** Changes (see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html)).
+1. Click **Review Pending** Changes.
+
+1. Ensure the Boomi tile has been selected.
 
 1. Click **Apply Changes** to complete the installation of the Boomi Data Services for PCF tile.
 
@@ -124,7 +125,7 @@ To select AZs and networks for VMs used by Boomi Data Services for PCF, do the f
 ##<a id="service-broker-setup"></a> Account Setup
 
 The Boomi Data Services Service Broker talks to AtomSphere to deploy integration packs onto virtual
-atoms, inside of the context of a sub-account.
+Atoms, inside of the context of a sub-account.
 <ol>
   <li> Click on **Account Setup**.</li>
   <li> Configure fields in <strong> Account Setup </strong> as follows.
@@ -210,7 +211,7 @@ This pane allows you to configure the Boomi Molecules that will be deployed for 
         </tr>
         <tr>
            <th> Atom Name Prefix </th>
-           <td> Text field allows you to specify a prefix for naming the atom deployed
+           <td> Text field allows you to specify a prefix for naming the Atom deployed
            for the primary environment.  This prefix allows you to differentiate installations
            from one another, in Atom Management within the AtomSphere web interface.</td>
         </tr>
