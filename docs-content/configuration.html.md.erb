@@ -1,0 +1,85 @@
+---
+title: Configuring Boomi Data Services for PCF (PKS) on PKS
+owner: Partners
+---
+
+This topic describes advanced, non-required, configuration options for Boomi Data Services for Pivotal Cloud
+Foundry (PCF).
+
+  - [Catalog Refresh Interval](#catalog-refresh)
+  - [Support for Autofs/Automounts](#autofs)
+  - [Configure Registration/De-Registration Errands](#errands)
+  - [Scaling Deployed Resources](#scaling)
+
+##<a id="catalog-refresh"></a> Catalog Refresh Interval
+
+### Tile settings -> Account Setup -> Catalog Refresh Interval
+
+How often to poll the Boomi AtomSphere API looking for new
+integration packs to be made available, and subsequently refresh the
+catalog of available services.
+
+This can be decreased if a faster refresh for services is required
+or increased to prevent an environment from rate limiting the
+associated Boomi account.
+
+<img src="img/om-account-setup.png" />
+
+##<a id="autofs"></a> Support for Autofs/Automounts
+
+### Tile settings -> Advanced -> Data Volume AutoFS Configuration
+
+This gives operators the option to specify their own Autofs map.
+
+Enter your Autofs master map in the text box here.
+A commented-out map with example values has been provided.
+
+This specifies the complete, direct map of Linux automounter
+configuration, to be used on the `molecule` pods.
+
+Here is an example, that mounts two volumes into `/data/...`:
+
+    ```
+      storage:
+        autofs: |
+          /data/etl3  -fstype=nfs,ro    10.7.8.9:/nas/_filer1/etl3
+          /data/ftw   -fstype=nfs       172.16.31.99:/s/ee/whse1/ftw-prod
+    ```
+
+Any Boomi processes or workflows deployed to an installation
+with that configuration will be able to seamlessly access the `/data/etl3` and `/data/ftw` volumes remotely on-demand.
+More importantly, failure of the backing storage systems will not prevent the Boomi Data Services
+installation from booting and performing any _other_ work.
+
+For more details on the format of this key, see the Linux manual
+page for Autofs, `autofs(5)`.
+
+<img src="img/om-advanced.png" />
+
+##<a id="errands"></a> Configure Registration/De-Registration Errands
+
+### Tile settings -> Errands -> Post-Deploy/Pre-Delete Errands
+
+These are errands that can save you pre and post-deploy configuration.
+
+By default, the tile will register your Boomi Data Services
+Broker with your PCF, set up some routing for the broker/services,
+and populate your cf marketplace.
+
+To do this, the tile uses bespoke errand jobs called `Service Broker Registration Errand`
+and `Service Broker De-registration Errand`.
+These are activated by default, but can be found under the `Errands` heading in the tile.
+
+If the registration or de-registration errand is preventing an apply-changes
+from completing, they can be disabled here, and later replicated via the `cf` cli.
+More info can be found at https://docs.cloudfoundry.org/services/managing-service-brokers.html
+
+<img src="img/om-errands.png" />
+
+##<a id="scaling"></a> Scaling Deployed Resources
+### Tile settings -> Resource Config
+This pane contains sane defaults for the job nodes configured and deployed with this tile.
+In general, you should not need to change these.
+However, in the case of scaling issues these can be reviewed and adjusted using the drop-down menus provided on this page.
+
+<img src="img/om-resource-config.png" />

@@ -5,6 +5,32 @@ owner: Partners
 
 Release notes for Boomi Data Services for Pivotal Cloud Foundry (PCF).
 
+##<a id="v0.11.5"></a> v0.11.5
+
+**Release Date:** July 22, 2019
+
+*External NFS/NAS - operators who wish to use their own NFS/NAS servers
+  to host the Boomi Molecule installation can now do so, by specifying their
+  _storage mode_ as `external`, and providing the details for reaching the
+  NFS/NAS endpoint (host/ip and volume path)
+
+*Automounting of NFS Data Volumes - operators can now specify a set of
+  data volume mountpoints that will be handled via the Linux automounter.
+  This allows processes deployed to the cluster to reference datasets from
+  outside the cluster, without introducing any undue dependencies on
+  third-party NFS/NAS/storage devices.
+
+*Graceful Decommissioning - when `molecule` pods are terminated, they
+  now initiate a graceful decommissioning shutdown of the molecule, properly
+  ejecting it from the cluster and avoiding head node leader election
+  problems.
+
+*PCF Registration is now baked in, but optional.  By default, your
+  Boomi Data Services Broker will be registered with the gorouter (and
+  advertise appropriate routes), and made available in the PCF services
+  marketplace.  This can be disabled for sites that want to control how this
+  registration and route mapping takes place.
+
 ##<a id="v0.10.1"></a> v0.10.1
 
 **Release Date:** March 28, 2019

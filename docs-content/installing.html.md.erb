@@ -3,8 +3,9 @@ title: Installing and Configuring Boomi Data Services for PCF
 owner: Partners
 ---
 
-
 This topic describes how to install and configure Boomi Data Services for Pivotal Cloud Foundry (PCF).
+All of the following described configuration fields are <b>required</b>
+For advanced (non-required) configuration options see the Configuration page.
 
 ##<a id="reqs-account"></a> Requirements: A Boomi AtomSphere Integration Platform Account
 
@@ -32,7 +33,7 @@ new AtomSphere Cloud:
 3. Ensure that:
     - **Allow Deployments** checkbox is checked.
     - **Max. Atom Attachments per Account** is set to **-1**.
-    - **Classification** is set to **Production**.
+    - **Classification** matches your licensing type (PROD vs DEV).
 
 4. Record the Cloud Name that you chose for your new cloud, because tile configuration
 requires that piece of information.
@@ -56,10 +57,11 @@ To install the Boomi Data Services for PCF tile on the Ops Manager Installation 
 
 1. Complete all the configuration steps in the <a href="#configure">Configure Tile Properties</a> section below.
 
-1. Return to the Ops Manager Installation Dashboard.
+1. Return to the Ops Manager installation dashboard.
 
-1. If you are using Ops Manager v2.3 or later, click
-   **Review Pending** Changes (see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html)).
+1. Click **Review Pending** Changes.
+
+1. Ensure the Boomi tile has been selected.
 
 1. Click **Apply Changes** to complete the installation of the Boomi Data Services for PCF tile.
 
@@ -123,7 +125,7 @@ To select AZs and networks for VMs used by Boomi Data Services for PCF, do the f
 ##<a id="service-broker-setup"></a> Account Setup
 
 The Boomi Data Services Service Broker talks to AtomSphere to deploy integration packs onto virtual
-atoms, inside of the context of a sub-account.
+Atoms, inside of the context of a sub-account.
 <ol>
   <li> Click on **Account Setup**.</li>
   <li> Configure fields in <strong> Account Setup </strong> as follows.
@@ -141,37 +143,29 @@ atoms, inside of the context of a sub-account.
         <th>Boomi AtomSphere Account Username</th>
         <td> Text field allows you to enter the Dell Boomi Platform username of a service account to use for this
   deployment.  Dell Boomi recommends utilizing a service account, as opposed to a named account, for audit purposes.
-  This field is <b>required</b>.
        </td>
       </tr>
       <tr>
         <th>Boomi AtomSphere Account Password</th>
-        <td>Fields allows you to specify the password for the Dell Boomi Platform service account. This field is <b>required</b>.
+        <td>Fields allows you to specify the password for the Dell Boomi Platform service account.
         </td>
      </tr>
      <tr>
        <th>Master Account ID</th>
        <td> Text field allows you to supply the Account ID of your primary Dell Boomi Platform account.
   You can find this information in the Dell Boomi AtomSphere web interface, under the account menu in the top
-  navigation bar. This field is <b>required</b>.</td>
+  navigation bar.</td>
     </tr>
       <tr>
-        <th>Boomi AtomSphere Sub-accounts</th>
+        <th>Boomi AtomSphere Sub-Accounts</th>
         <td>
-          Explicitly set the list of sub-accounts as a comma-delimited list (sub-account1, sub-account2...). 
-          This field is <b>required</b>.
-        </td>
-     </tr>
-     <tr>
-        <th>Show Pre-Deployed APIs in Catalog</th>
-        <td>Whether or not pre-deployed APIs (visible in API Management) should be offered as bindable services in Cloud Foundry.
+          Explicitly set the list of sub-accounts as a comma-delimited list (sub-account1, sub-account2...).
         </td>
      </tr>
      <tr>
         <th>Catalog Refresh Interval</th>
         <td>How often (in minutes) to refresh PCF service catalog information from the Boomi AtomSphere API. 
             Note: Setting too low of a value may exhaust AtomSphere API usage allowance for your account.
-            This field is <b>required</b>.
         </td>
      </tr>
    </tbody>
@@ -203,64 +197,26 @@ This pane allows you to configure the Boomi Molecules that will be deployed for 
       <tbody>
         <tr>
           <th> Environment Name  </th>
-          <td> Text field allows you to provide the name of the Primary Environment. This field is <b>required</b>.</td>
+          <td> Text field allows you to provide the name of the Primary Environment.</td>
         </tr>
         <tr>
           <th> Environment Type  </th>
-          <td> The type of this environment, for Boomi license purposes. This field is <b>required</b>.</td>
+          <td> The type of this environment, for Boomi license purposes.</td>
         </tr>
         <tr>
           <th> Cloud Name </th>
           <td> Text field allows you to specify the name of the Atom Cloud to associate
-          the deployed Atom instance to.  This Cloud must have already been created in AtomSphere. This field is <b>required</b>.
+          the deployed Atom instance to.  This Cloud must have already been created in AtomSphere.
           </td>
         </tr>
         <tr>
            <th> Atom Name Prefix </th>
-           <td> Text field allows you to specify a prefix for naming the atom deployed
+           <td> Text field allows you to specify a prefix for naming the Atom deployed
            for the primary environment.  This prefix allows you to differentiate installations
-           from one another, in Atom Management within the AtomSphere web interface. This field is <b>required</b>.</td>
+           from one another, in Atom Management within the AtomSphere web interface.</td>
         </tr>
       </tbody>
     </table>
   </li>
   <li> Click <strong>Save</strong>.</li>
-</ol>
-##<a id="configure-errands"></a> Configure the Errands
-These are errands that can save you pre and post-deploy configuration.
-<ol>
-  <li> Click on <strong>Errands</strong>.</li>
-  <li> Configure <strong>Errands</strong> as follows:
-    <table>
-      <thead>
-        <tr>
-          <th> Field </th>
-          <th> Instructions </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Post Deploy Errands</th>
-          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On.
-              On enumerates and registers all sub-account-specific service brokers
-              with the deployed PAS.</td>
-        </tr>
-        <tr>
-          <th>Pre-Delete Errands</th>
-          <td>Choose <strong>Off</strong> or <strong>On</strong>. Defaults to On.
-              On unregisters all sub-account-specific service brokers with the deployed PAS.</td>
-        </tr>
-      </tbody>
-    </table>
-   </li>
-  <li> Click <strong>Save</strong>.</li>
-</ol>
-##<a id="configure-resource-config"></a> Configure Resource Config
-
-This pane contains sane defaults for the job nodes configured and deployed with this tile.
-<ol>
-  <li> Click on <strong> Configure Resource Config</strong>.</li>
-  <li> Review the defaults.
-       In general, you should not need to change these.
-       However, in the case of scaling issues, these can be reviewed and adjusted.</li>
 </ol>
