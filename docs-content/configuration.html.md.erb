@@ -23,6 +23,8 @@ This can be decreased if a faster refresh for services is required
 or increased to prevent an environment from rate limiting the
 associated Boomi account.
 
+<img src="img/om-account-setup.png" />
+
 ##<a id="autofs"></a> Support for Autofs/Automounts
 
 ### Tile settings -> Advanced -> Data Volume AutoFS Configuration
@@ -52,6 +54,8 @@ installation from booting and performing any _other_ work.
 For more details on the format of this key, see the Linux manual
 page for Autofs, `autofs(5)`.
 
+<img src="img/om-advanced.png" />
+
 ##<a id="errands"></a> Configure Registration/De-Registration Errands
 
 ### Tile settings -> Errands -> Post-Deploy/Pre-Delete Errands
@@ -70,8 +74,12 @@ If the registration or de-registration errand is preventing an apply-changes
 from completing, they can be disabled here, and later replicated via the `cf` cli.
 More info can be found at https://docs.cloudfoundry.org/services/managing-service-brokers.html
 
-##<a id="scaling"></a> Scaling Deployed Resources
+<img src="img/om-errands.png" />
 
+##<a id="scaling"></a> Scaling Deployed Resources
+### Tile settings -> Resource Config
 This pane contains sane defaults for the job nodes configured and deployed with this tile.
 In general, you should not need to change these.
 However, in the case of scaling issues these can be reviewed and adjusted using the drop-down menus provided on this page.
+
+<img src="img/om-resource-config.png" />
