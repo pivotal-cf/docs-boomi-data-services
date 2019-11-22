@@ -1,10 +1,10 @@
 ---
-title: Configuring Boomi Data Services for PCF (PKS) on PKS
+title: Configuring Boomi Data Services for Pivotal Platform (PKS) on PKS
 owner: Partners
 ---
 
 This topic describes advanced, non-required, configuration options for Boomi Data Services for Pivotal Cloud
-Foundry (PCF).
+Foundry (Pivotal Platform).
 
   - [Catalog Refresh Interval](#catalog-refresh)
   - [Support for Autofs/Automounts](#autofs)
@@ -15,7 +15,7 @@ Foundry (PCF).
 
 ##<a id="catalog-refresh"></a> Catalog Refresh Interval
 
-### Tile settings -> Account Setup -> Catalog Refresh Interval
+### Tile settings &rarr; Account Setup &rarr; Catalog Refresh Interval
 
 How often to poll the Boomi AtomSphere API looking for new
 integration packs to be made available, and subsequently refresh the
@@ -28,8 +28,12 @@ associated Boomi account.
 <img src="img/om-account-setup.png" />
 
 
+<<<<<<< HEAD
 ##<a id="autofs"></a> Support for Autofs/Automounts
 ### Tile settings -> Advanced -> Data Volume AutoFS Configuration
+=======
+### Tile settings &rarr; Advanced &rarr; Data Volume Autofs Configuration
+>>>>>>> eebb7a60f220706e044e45f961b91847571648e7
 
 This gives operators the option to specify their own Autofs map.
 
@@ -54,7 +58,7 @@ More importantly, failure of the backing storage systems will not prevent the Bo
 installation from booting and performing any _other_ work.
 
 For more details on the format of this key, see the Linux manual
-page for Autofs, `autofs(5)`.
+page for [Autofs] (https://linux.die.net/man/5/autofs).
 
 <img src="img/om-advanced.png" />
 
@@ -76,7 +80,7 @@ page for NFS, `nfs(5)`.
 These are errands that can save you pre and post-deploy configuration.
 
 By default, the tile will register your Boomi Data Services
-Broker with your PCF, set up some routing for the broker/services,
+Broker with your Pivotal Platform, set up some routing for the broker/services,
 and populate your cf marketplace.
 
 To do this, the tile uses bespoke errand jobs called `Service Broker Registration Errand`
@@ -90,7 +94,7 @@ More info can be found at https://docs.cloudfoundry.org/services/managing-servic
 <img src="img/om-errands.png" />
 
 ##<a id="scaling"></a> Scaling Deployed Resources
-### Tile settings -> Resource Config
+### Tile settings &rarr; Resource Config
 This pane contains sane defaults for the job nodes configured and deployed with this tile.
 In general, you should not need to change these.
 However, in the case of scaling issues these can be reviewed and adjusted using the drop-down menus provided on this page.
