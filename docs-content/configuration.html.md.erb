@@ -8,8 +8,10 @@ Foundry (PCF).
 
   - [Catalog Refresh Interval](#catalog-refresh)
   - [Support for Autofs/Automounts](#autofs)
+  - [Configure NFS Options](#nfs)
   - [Configure Registration/De-Registration Errands](#errands)
   - [Scaling Deployed Resources](#scaling)
+
 
 ##<a id="catalog-refresh"></a> Catalog Refresh Interval
 
@@ -25,8 +27,8 @@ associated Boomi account.
 
 <img src="img/om-account-setup.png" />
 
-##<a id="autofs"></a> Support for Autofs/Automounts
 
+##<a id="autofs"></a> Support for Autofs/Automounts
 ### Tile settings -> Advanced -> Data Volume AutoFS Configuration
 
 This gives operators the option to specify their own Autofs map.
@@ -56,8 +58,19 @@ page for Autofs, `autofs(5)`.
 
 <img src="img/om-advanced.png" />
 
-##<a id="errands"></a> Configure Registration/De-Registration Errands
 
+##<a id="nfs"></a> Configure NFS Mount Options
+### Tile settings -> Advanced -> NFS Mount Options
+
+This gives operators the option to specify their own NFS mount options
+
+Enter a comma separated list of options to provide the nfs mount
+
+For more details on the format of this key, see the Linux manual
+page for NFS, `nfs(5)`.
+
+
+##<a id="errands"></a> Configure Registration/De-Registration Errands
 ### Tile settings -> Errands -> Post-Deploy/Pre-Delete Errands
 
 These are errands that can save you pre and post-deploy configuration.
