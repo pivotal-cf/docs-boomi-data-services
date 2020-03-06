@@ -1,9 +1,9 @@
 ---
-title: Installing and Configuring Boomi Data Services for Pivotal Platform
+title: Installing and Configuring Boomi Data Services for VMware Tanzu
 owner: Partners
 ---
 
-This topic describes how to install and configure Boomi Data Services for Pivotal Platform (Pivotal Platform).
+This topic describes how to install and configure Boomi Data Services for VMware Tanzu (VMware Tanzu).
 All of the following described configuration fields are <b>required</b>
 For advanced (non-required) configuration options see the Configuration page.
 
@@ -17,7 +17,7 @@ You need a Boomi AtomSphere Platform account with the following:
 
 ##<a id="reqs-cloud"></a> Requirements: An Atom Cloud
 
-Before you can configure Boomi Data Services for Pivotal Platform, you need to create a
+Before you can configure Boomi Data Services for VMware Tanzu, you need to create a
 Cloud using the Boomi AtomSphere web interface.  To do so:
 
 1. Navigate to the **Manage** &raquo;
@@ -55,9 +55,9 @@ new AtomSphere Cloud:
 that you want to configure and deploy.
 
 
-##<a id="install"></a> Download and Install Boomi Data Services for Pivotal Platform
+##<a id="install"></a> Download and Install Boomi Data Services for VMware Tanzu
 
-To install the Boomi Data Services for Pivotal Platform tile on the Ops Manager Installation Dashboard, do the following:
+To install the Boomi Data Services for VMware Tanzu tile on the Ops Manager Installation Dashboard, do the following:
 
 1. Download the product file from Pivotal Network.
 
@@ -65,7 +65,7 @@ To install the Boomi Data Services for Pivotal Platform tile on the Ops Manager 
 
 1. Click the + symbol next to the uploaded product description.
 
-1. Click on the Boomi Data Services for Pivotal Platform tile.
+1. Click on the Boomi Data Services for VMware Tanzu tile.
 
 1. Complete all the configuration steps in the <a href="#configure">Configure Tile Properties</a> section below.
 
@@ -75,14 +75,14 @@ To install the Boomi Data Services for Pivotal Platform tile on the Ops Manager 
 
 1. Ensure the Boomi tile has been selected.
 
-1. Click **Apply Changes** to complete the installation of the Boomi Data Services for Pivotal Platform tile.
+1. Click **Apply Changes** to complete the installation of the Boomi Data Services for VMware Tanzu tile.
 
 ##<a id="configure"></a> Configure Tile Properties
 
 To configure tile properties, do the following:
 
 <ol>
-   <li>In Ops Manager, click on the Boomi Data Services for Pivotal Platform tile
+   <li>In Ops Manager, click on the Boomi Data Services for VMware Tanzu tile
        and work through the panes listed on the left side of the page.
 
       <br/><img src="img/om-sections.png" alt="settings panes for Boomi Data Services"  width="300">
@@ -102,7 +102,7 @@ To configure tile properties, do the following:
 
 ##<a id="azs"></a> Assign AZs and Networks
 
-To select AZs and networks for VMs used by Boomi Data Services for Pivotal Platform, do the following:
+To select AZs and networks for VMs used by Boomi Data Services for VMware Tanzu, do the following:
 
 <ol>
   <li>Click <strong>Assign AZs and Networks</strong>
@@ -124,7 +124,7 @@ To select AZs and networks for VMs used by Boomi Data Services for Pivotal Platf
        </tr>
        <tr>
          <th>Network</th>
-         <td>Select your Pivotal Application Service (PAS) network.</td>
+         <td>Select your VMware Tanzu Application Service for VMs (TAS for VMs) network.</td>
        </tr>
      <tbody>
    </table>
@@ -176,7 +176,7 @@ Atoms, inside of the context of a sub-account.
      </tr>
      <tr>
         <th>Catalog Refresh Interval</th>
-        <td>How often (in minutes) to refresh Pivotal Platform service catalog information from the Boomi AtomSphere API. 
+        <td>How often (in minutes) to refresh VMware Tanzu service catalog information from the Boomi AtomSphere API. 
             Note: Setting too low of a value may exhaust AtomSphere API usage allowance for your account.
         </td>
      </tr>

@@ -1,10 +1,10 @@
 ---
-title: Configuring Boomi Data Services for Pivotal Platform (PKS) on PKS
+title: Configuring Boomi Data Services for VMware Tanzu (PKS) on PKS
 owner: Partners
 ---
 
 This topic describes advanced, non-required, configuration options for Boomi Data Services for Pivotal Cloud
-Foundry (Pivotal Platform).
+Foundry (VMware Tanzu).
 
   - [Catalog Refresh Interval](#catalog-refresh)
   - [Support for Autofs/Automounts](#autofs)
@@ -76,7 +76,7 @@ page for NFS, `nfs(5)`.
 These are errands that can save you pre and post-deploy configuration.
 
 By default, the tile will register your Boomi Data Services
-Broker with your Pivotal Platform, set up some routing for the broker/services,
+Broker with your VMware Tanzu, set up some routing for the broker/services,
 and populate your cf marketplace.
 
 To do this, the tile uses bespoke errand jobs called `Service Broker Registration Errand`
