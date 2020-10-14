@@ -15,7 +15,7 @@ GEM
     mimemagic (0.3.2)
     multi_json (1.12.1)
     multipart-post (2.0.0)
-    puma (3.6.0)
+    puma (3.12.6)
     rack (2.0.1)
     rack-rewrite (1.5.1)
     ref (2.0.0)
