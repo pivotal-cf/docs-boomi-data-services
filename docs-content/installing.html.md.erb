@@ -3,9 +3,10 @@ title: Installing and Configuring Boomi Data Services for VMware Tanzu
 owner: Partners
 ---
 
-This topic describes how to install and configure Boomi Data Services for VMware Tanzu (VMware Tanzu).
-All of the following described configuration fields are <b>required</b>
-For advanced (non-required) configuration options see the Configuration page.
+This topic describes how to install and configure Boomi Data Services for VMware
+Tanzu Application Service (TAS). All of the following described configuration
+fields are <b>required</b> For advanced (non-required) configuration options see
+the Configuration page.
 
 ##<a id="reqs-account"></a> Requirements: A Boomi AtomSphere Integration Platform Account
 
@@ -57,9 +58,10 @@ that you want to configure and deploy.
 
 ##<a id="install"></a> Download and Install Boomi Data Services for VMware Tanzu
 
-To install the Boomi Data Services for VMware Tanzu tile on the Ops Manager Installation Dashboard, do the following:
+To install the Boomi Data Services for VMware Tanzu tile on the Ops Manager
+Installation Dashboard, do the following:
 
-1. Download the product file from Pivotal Network.
+1. Download the product file from the VMware Tanzu Network.
 
 1. Click **Import a Product** to import the tile into Ops Manager.
 
@@ -102,7 +104,8 @@ To configure tile properties, do the following:
 
 ##<a id="azs"></a> Assign AZs and Networks
 
-To select AZs and networks for VMs used by Boomi Data Services for VMware Tanzu, do the following:
+To select AZs and networks for VMs used by Boomi Data Services for VMware Tanzu,
+do the following:
 
 <ol>
   <li>Click <strong>Assign AZs and Networks</strong>
@@ -124,7 +127,7 @@ To select AZs and networks for VMs used by Boomi Data Services for VMware Tanzu,
        </tr>
        <tr>
          <th>Network</th>
-         <td>Select your VMware Tanzu Application Service for VMs (TAS for VMs) network.</td>
+         <td>Select your VMware Tanzu Application Service (TAS) network.</td>
        </tr>
      <tbody>
    </table>
@@ -176,7 +179,7 @@ Atoms, inside of the context of a sub-account.
      </tr>
      <tr>
         <th>Catalog Refresh Interval</th>
-        <td>How often (in minutes) to refresh VMware Tanzu service catalog information from the Boomi AtomSphere API. 
+        <td>How often (in minutes) to refresh the VMware Tanzu service catalog information from the Boomi AtomSphere API. 
             Note: Setting too low of a value may exhaust AtomSphere API usage allowance for your account.
         </td>
      </tr>
