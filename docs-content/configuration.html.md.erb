@@ -25,7 +25,7 @@ This can be decreased if a faster refresh for services is required
 or increased to prevent an environment from rate limiting the
 associated Boomi account.
 
-<img src="img/om-account-setup.png" />
+![alt-text=""](img/om-account-setup.png)
 
 
 ##<a id="autofs"></a> Support for Autofs/Automounts
@@ -41,12 +41,12 @@ configuration, to be used on the `molecule` pods.
 
 Here is an example, that mounts two volumes into `/data/...`:
 
-    ```
+```
       storage:
         autofs: |
           /data/etl3  -fstype=nfs,ro    10.7.8.9:/nas/_filer1/etl3
           /data/ftw   -fstype=nfs       172.16.31.99:/s/ee/whse1/ftw-prod
-    ```
+```
 
 Any Boomi processes or workflows deployed to an installation
 with that configuration will be able to seamlessly access the `/data/etl3` and `/data/ftw` volumes remotely on-demand.
@@ -54,9 +54,9 @@ More importantly, failure of the backing storage systems will not prevent the Bo
 installation from booting and performing any _other_ work.
 
 For more details on the format of this key, see the Linux manual
-page for [Autofs] (https://linux.die.net/man/5/autofs).
+page for [Autofs](https://linux.die.net/man/5/autofs).
 
-<img src="img/om-advanced.png" />
+![alt-text=""](img/om-advanced.png)
 
 
 ##<a id="nfs"></a> Configure NFS Mount Options
@@ -87,7 +87,7 @@ If the registration or de-registration errand is preventing an apply-changes
 from completing, they can be disabled here, and later replicated via the `cf` cli.
 More info can be found at https://docs.cloudfoundry.org/services/managing-service-brokers.html
 
-<img src="img/om-errands.png" />
+![alt-text=""](img/om-errands.png)
 
 ##<a id="scaling"></a> Scaling Deployed Resources
 ### Tile settings &rarr; Resource Config
@@ -95,4 +95,4 @@ This pane contains sane defaults for the job nodes configured and deployed with 
 In general, you should not need to change these.
 However, in the case of scaling issues these can be reviewed and adjusted using the drop-down menus provided on this page.
 
-<img src="img/om-resource-config.png" />
+![alt-text=""](img/om-resource-config.png)
